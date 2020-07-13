@@ -50,7 +50,7 @@ MongoBeautifulLogger.new(Logger.new('your_log_file'))
 
 ## Contributing
 
-Noticed a bug or something missing from this gem? Open a [github issue](https://github.com/redline-gh/mongo_beautiful_logger/issues/new), or submit a pull request. Any contribution is greatly appreciated.
+Noticed a bug or something missing from this gem? Open a [github issue](https://github.com/ibraheemdev/mongo_beautiful_logger/issues/new), or submit a pull request. Any contribution is greatly appreciated.
 
 ## License
 

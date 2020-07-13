@@ -8,7 +8,7 @@ Gem::Specification.new do |spec|
   spec.email         = ["ibrah1440@gmail.com"]
 
   spec.summary       = %q{A simple and beautiful logger for MongoDB/Mongoid in you Ruby/Rails app.}
-  spec.homepage      = "https://github.com/redline-gh/mongo_beautiful_logger"
+  spec.homepage      = "https://github.com/ibraheemdev/mongo_beautiful_logger"
   spec.license       = "MIT"
 
   spec.files         = ["lib/mongo_beautiful_logger.rb", "lib/mongo_beautiful_logger/colors.rb", "lib/mongo_beautiful_logger/mongo_actions.rb"]
