@@ -48,9 +48,9 @@ The MongoidBeautifulLogger class takes an optional parameter which specifies the
 MongoBeautifulLogger.new(Logger.new('your_log_file'))
 ```
 
-## Contributing
+## Behavior
 
-Noticed a bug or something missing from this gem? Open a [github issue](https://github.com/ibraheemdev/mongo_beautiful_logger/issues/new), or submit a pull request. Any contribution is greatly appreciated.
+Mongo Beautiful logger automatically colors all mongodb actions (find, update, insert, delete, aggregate, error, endsession, failure). It will also filter out the redundant messages regarding topology events, and server description changes. If there are any other actions that you would like to be included, you can open a [github issue](https://github.com/ibraheemdev/mongo_beautiful_logger/issues/new), or submit a pull request. Any contribution is greatly appreciated.
 
 ## License
 

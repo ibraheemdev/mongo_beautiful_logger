@@ -21,7 +21,7 @@ module MongoActions
 
   # regex for for the log prefix that will be filtered out
   # matches: +| localhost:27017 | app_test.update | STARTED |+
-  # note: +| STARTED |+ and +| SUCCEEDED |+ will be filtered due to redundancy
+  # note: +| STARTED |+ and +| SUCCEEDED |+ will be filtered due to redundancy,
   # but +| FAILED |+ and others will not
   PREFIX_REGEX = /\|.*?\|.*?\|( (SUCCEEDED|STARTED) \|)?/
 end
