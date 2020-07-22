@@ -38,9 +38,6 @@ Mongo::Logger.logger = MongoBeautifulLogger.new
 
 # Mongoid ODM:
 Mongoid.logger = MongoBeautifulLogger.new
-
-# Mongoid + Rails
-Mongoid.logger = MongoBeautifulLogger.new if Rails.env.development?
 ```
 
 The MongoidBeautifulLogger class takes an optional parameter which specifies the logger instance to be used. This is useful when logging to a file instead of the terminal:
