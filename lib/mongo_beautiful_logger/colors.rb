@@ -1,5 +1,6 @@
+# ANSI escape sequences for outputting colored logs
+
 module Colors
-  # ANSI escape sequences for outputting colored logs
   WHITE     = "\e[37m"
   CYAN      = "\e[36m"
   MAGENTA   = "\e[35m"

@@ -29,11 +29,11 @@ Or install it yourself as:
 
 ## Usage
 
-To use Mongo Beautiful Logger as you default mongo logger, create a configuration file:
+To use Mongo Beautiful Logger as you default mongo logger, create a configuration file, and fill it with the following:
 ```ruby
 require "mongo_beautiful_logger"
 
-# plain mongo:
+# MongoDB Driver:
 Mongo::Logger.logger = MongoBeautifulLogger.new
 
 # Mongoid ODM:
@@ -45,9 +45,20 @@ The MongoidBeautifulLogger class takes an optional parameter which specifies the
 MongoBeautifulLogger.new(Logger.new('your_log_file'))
 ```
 
+*Note: When using a custom logger instance, the default unformatted ruby logger prompt will be used:*
+```ruby
+=> d, [2020-06-20 14:02:29 No.17329] INFO -- MONGODB: ...
+```
+If you want to customize the logger prompt, you can use the `logger.formatter` method. For example:
+```ruby
+logger = Logger.new('log.txt')
+logger.formatter = proc { |severity, datetime, progname, msg| "#{msg}" }
+Mongoid.logger = MongoBeautifulLogger.new(logger)
+```
+
 ## Behavior
 
-Mongo Beautiful logger automatically colors all mongodb actions (find, update, insert, delete, aggregate, error, endsession, failure). It will also filter out the redundant messages regarding topology events, and server description changes. If there are any other actions that you would like to be included, you can open a [github issue](https://github.com/ibraheemdev/mongo_beautiful_logger/issues/new), or submit a pull request. Any contribution is greatly appreciated.
+Mongo Beautiful logger automatically colors all mongodb actions (find, update, insert, delete, aggregate, error, endsession, failure). It will also filter out the redundant messages regarding topology events, and server description changes. If there are any other actions that you would like to be customized, you can open a [github issue](https://github.com/ibraheemdev/mongo_beautiful_logger/issues/new), or submit a pull request. Any contribution is greatly appreciated.
 
 ## License
 

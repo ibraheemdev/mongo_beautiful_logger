@@ -6,15 +6,16 @@ class MongoBeautifulLogger
   include MongoActions
   include Colors
 
-  def initialize(logger = Logger.new($stdout))
-    @logger = format_logger(logger)
+  def initialize(logger = default_logger)
+    @logger = logger
   end
 
   private
 
-  # filters out default logger prompt of:
+  # default logger, removes prompt of:
   # +d, [2020-06-20 14:02:29#17329] INFO -- MONGODB:+
-  def format_logger(logger)
+  def default_logger
+    logger = Logger.new($stdout)
     logger.formatter = proc { |severity, datetime, progname, msg| "#{msg}" }
     logger
   end
