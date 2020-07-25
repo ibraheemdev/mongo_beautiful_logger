@@ -13,8 +13,9 @@ module MongoActions
   FAILED       = { match: "failed",            color: RED }
   ERROR        = { match: "error",             color: RED }
   ENDSESSION   = { match: "\"endsessions\"=>", color: YELLOW }
+  INITIALIZING = { match: "initializing",      color: GREEN }
   ACTIONS      = [ FIND, UPDATE, INSERT, DELETE, AGGREGATE, 
-                   SUCCEEDED, FAILED, ERROR, ENDSESSION ]
+                   SUCCEEDED, FAILED, ERROR, ENDSESSION, INITIALIZING ]
   
   # substring matches for unnecessary log messages that will be filtered out
   UNNECESSARY  = ["opology", "server description"]
