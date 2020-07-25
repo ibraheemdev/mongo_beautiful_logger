@@ -34,26 +34,15 @@ To use Mongo Beautiful Logger as you default mongo logger, create a configuratio
 require "mongo_beautiful_logger"
 
 # MongoDB Driver:
-Mongo::Logger.logger = MongoBeautifulLogger.new
+Mongo::Logger.logger = MongoBeautifulLogger.new($stdout)
 
 # Mongoid ODM:
-Mongoid.logger = MongoBeautifulLogger.new
+Mongoid.logger = MongoBeautifulLogger.new($stdout)
 ```
 
-The MongoidBeautifulLogger class takes an optional parameter which specifies the logger instance to be used. This is useful when logging to a file instead of the terminal:
+The MongoidBeautifulLogger class takes unlimited parameters which specify multiple output destinations. This can be used to output logs to a file as well as the console:
 ```ruby
-MongoBeautifulLogger.new(Logger.new('your_log_file'))
-```
-
-*Note: When using a custom logger instance, the default unformatted ruby logger prompt will be used:*
-```ruby
-=> d, [2020-06-20 14:02:29 No.17329] INFO -- MONGODB: ...
-```
-If you want to customize the logger prompt, you can use the `logger.formatter` method. For example:
-```ruby
-logger = Logger.new('log.txt')
-logger.formatter = proc { |severity, datetime, progname, msg| "#{msg}" }
-Mongoid.logger = MongoBeautifulLogger.new(logger)
+MongoBeautifulLogger.new($stdout, 'log.txt')
 ```
 
 ## Behavior

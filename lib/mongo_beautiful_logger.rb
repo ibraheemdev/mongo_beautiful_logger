@@ -6,18 +6,25 @@ class MongoBeautifulLogger
   include MongoActions
   include Colors
 
-  def initialize(logger = default_logger)
-    @logger = logger
+  def initialize(*targets)
+    nil_targets_error if targets.empty?
+    @targets = targets.map do |t| 
+      logger = Logger.new(t)
+      format! logger
+      logger
+    end
   end
 
   private
 
-  # default logger, removes prompt of:
+  def nil_targets_error
+    raise ArgumentError.new "wrong number of arguments (given 0, expected at least 1)"
+  end
+
+  # default logger format, removes prompt of:
   # +d, [2020-06-20 14:02:29#17329] INFO -- MONGODB:+
-  def default_logger
-    logger = Logger.new($stdout)
+  def format!(logger)
     logger.formatter = proc { |severity, datetime, progname, msg| "#{msg}" }
-    return logger
   end
 
   # define custom logger methods
@@ -27,7 +34,7 @@ class MongoBeautifulLogger
       def #{level}(msg = nil, &block)
         return if unnecessary?(msg)
         msg = format_log(msg)
-        @logger.#{level}(msg, &block)
+        @targets.each { |t| t.#{level}(msg, &block) }; nil
       end
     RUBY
   end
@@ -57,7 +64,7 @@ class MongoBeautifulLogger
 
   # send all other methods back to logger instance
   def method_missing(method, *args, &block)
-    @logger.send(method, *args, &block)
+    @targets.each { |t| t.send(method, *args, &block) }
   end
 
   # set color based one the defined constants. 
