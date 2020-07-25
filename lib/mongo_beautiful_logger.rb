@@ -17,30 +17,42 @@ class MongoBeautifulLogger
   def default_logger
     logger = Logger.new($stdout)
     logger.formatter = proc { |severity, datetime, progname, msg| "#{msg}" }
-    logger
+    return logger
   end
 
   # define custom logger methods
-  # call formatting methods, and then send message string back to the logger instance
+  # formats log message and then sends message back to the logger instance
   %w(debug info warn error fatal unknown).each do |level|
     class_eval <<-RUBY
       def #{level}(msg = nil, &block)
-        msg = colorize_log(msg)
-        msg = filter_unnecessary(msg)
+        return if unnecessary?(msg)
+        msg = format_log(msg)
         @logger.#{level}(msg, &block)
       end
     RUBY
   end
 
+  # checks if a message if a message is included in the +UNNECESSARY+ array constant
+  def unnecessary?(msg)
+    UNNECESSARY.any? { |s| msg.downcase.include? s }
+  end
+
+  # takes a log message and returns the message formatted
+  def format_log(msg)
+    msg = colorize_log(msg)
+    msg = remove_prefix(msg)
+    "#{msg}\n"
+  end
+
   # colorize messages that are specified in ACTIONS constant
   def colorize_log(msg)
     ACTIONS.each { |a| msg = color(msg, a[:color]) if msg.downcase.include?(a[:match]) }
-    msg
+    return msg
   end
 
-  # filter out any unnecessary messages
-  def filter_unnecessary(msg)
-    UNNECESSARY.any? { |s| msg.downcase.include? s } ? "" : "#{msg.sub(PREFIX_REGEX, "|")}\n"
+  # remove prefix defined in +PREFIX_REGEX+ from message
+  def remove_prefix(msg)
+    msg.sub(PREFIX_REGEX, "|")
   end
 
   # send all other methods back to logger instance
