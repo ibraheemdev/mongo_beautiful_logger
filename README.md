@@ -6,12 +6,12 @@
 
 Have you ever started your rails console or log files, and groaned when this is what you saw? 😩
 
-![](./img/bad_logs.gif)
+<img src="./img/bad_logs.gif" width="700">
 
 
 Mongo Beautiful Logger is simple and beautiful logging gem that converts THAT, into this:
 
-![](./img/beautiful_logs.gif)
+<img src="./img/beautiful_logs.gif" width="700">
 
 Amazing, right? 😃
 
