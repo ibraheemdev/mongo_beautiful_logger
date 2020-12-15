@@ -40,7 +40,6 @@ $ gem install mongo_beautiful_logger
 To set Mongo Beautiful Logger as the default logger for MongoDB, create a configuration file and add it with the following:
 ```ruby
 # config/initializers/mongo_logger.rb
-
 require "mongo_beautiful_logger"
 
 # MongoDB Driver:
