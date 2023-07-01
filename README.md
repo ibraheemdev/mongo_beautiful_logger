@@ -4,16 +4,16 @@
 [![](https://img.shields.io/gem/v/mongo_beautiful_logger?style=for-the-badge)](https://rubygems.org/gems/mongo_beautiful_logger)
 [![](https://img.shields.io/badge/License-MIT-blue?style=for-the-badge)](https://github.com/ibraheemdev/mongo_beautiful_logger/blob/master/LICENSE.txt)
 
-Have you ever started your rails console or log files and groaned when this is what you saw? 😩
+Have you ever started your rails console or log files and groaned when this is what you saw?
 
 <img src="./img/bad_logs.gif" width="700">
 
 
-Mongo Beautiful Logger is simple and beautiful logging gem that converts THAT, into this:
+Mongo Beautiful Logger is simple and beautiful logging gem that converts *that*, into this:
 
 <img src="./img/beautiful_logs.gif" width="700">
 
-Amazing, right? 😃
+Amazing, right?
 
 ## Installation
 
