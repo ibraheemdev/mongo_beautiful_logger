@@ -15,6 +15,10 @@ class MongoBeautifulLogger
     end
   end
 
+  def level
+    @targets.first.level
+  end
+
   private
 
   def nil_targets_error
